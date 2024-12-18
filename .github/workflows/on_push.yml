@@ -12,7 +12,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20.x'
-          registry-url: 'https://trialk033s3.jfrog.io/artifactory/api/npm/paris-npm/'
+          password: trialk033s3.jfrog.io/docker-trial
+          username: jean@parpaillon.info
+          registry: 'https://trialk033s3.jfrog.io/artifactory/api/npm/paris-npm/'
       - run: npm install
       - run: npm publish --access public
         env:
