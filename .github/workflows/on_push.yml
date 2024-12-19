@@ -13,7 +13,8 @@ jobs:
           node-version: '16'
 
       - name: Install dependencies
-        run: npm installrtifactory
+        run: npm install
+      - name: Configure artifactory
         env:
           ARTIFACTORY_USEREMAIL: ${{ secrets.ARTIFACTORY_USEREMAIL }}
           ARTIFACTORY_PASSWORD: ${{ secrets.JFROG_NPM_TOKEN }}
