@@ -1,6 +1,6 @@
 {
   "name": "devops-tuto-node-melisse",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": false,
   "description": "Devops Tuto node",
   "main": "server.js",
