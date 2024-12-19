@@ -3,19 +3,27 @@ on: push
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      id-token: write
     steps:
       - uses: actions/checkout@v4
-      # Setup .npmrc file to publish to npm
       - uses: actions/setup-node@v4
         with:
-          node-version: '20.x'
-          password: trialk033s3.jfrog.io/docker-trial
-          username: jean@parpaillon.info
-          registry: 'https://trialk033s3.jfrog.io/artifactory/api/npm/paris-npm/'
-      - run: npm install
-      - run: npm publish --access public
+          node-version: '16'
+      - run: npm install 
+      - name: Configure artifactory
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.JFROG_NPM_TOKEN }}
+          ARTIFACTORY_USEREMAIL: ${{ secrets.ARTIFACTORY_USEREMAIL }}
+          ARTIFACTORY_PASSWORD: ${{ secrets.JFROG_NPM_TOKEN }}
+          ARTIFACTORY_URL: ${{ secrets.ARTIFACTORY_URL }}
+      - run: 
+         echo "email = hamdaniymelissa@gmail.com
+                always-auth = true
+                registry=https://trialk033s3.jfrog.io/artifactory/api/npm/paris-npm/
+                //trialk033s3.jfrog.io/artifactory/api/npm/paris-npm/:_authToken=cmVmdGtuOjAxOjE3NjYwNjg4NzE6RHUzSFZ0b3lyQUIyRlZjUnJGSGY3Q2U0RUps" > ~/.npmrc
+
+
+      - name: Push to artifactory
+        env:
+          ARTIFACTORY_URL: ${{ secrets.ARTIFACTORY_URL }}
+        run: npm publish --registry https://$ARTIFACTORY_URL/artifactory/api/npm/paris-npm/     
+
+      
