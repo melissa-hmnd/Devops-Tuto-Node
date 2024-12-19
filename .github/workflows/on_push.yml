@@ -4,12 +4,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up nodejs
+        uses: actions/setup-node@v3
         with:
           node-version: '16'
-      - run: npm install 
-      - name: Configure artifactory
+
+      - name: Install dependencies
+        run: npm installrtifactory
         env:
           ARTIFACTORY_USEREMAIL: ${{ secrets.ARTIFACTORY_USEREMAIL }}
           ARTIFACTORY_PASSWORD: ${{ secrets.JFROG_NPM_TOKEN }}
