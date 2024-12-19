@@ -21,10 +21,10 @@ jobs:
           ARTIFACTORY_URL: ${{ secrets.ARTIFACTORY_URL }}
         run:
           |
-          echo "email = hamdaniymelissa@gmail.com
+          echo "email = $ARTIFACTORY_USEREMAIL
                 always-auth = true
-                registry=https://trialk033s3.jfrog.io/artifactory/api/npm/paris-npm/
-                //trialk033s3.jfrog.io/artifactory/api/npm/paris-npm/:_authToken=cmVmdGtuOjAxOjE3NjYxMzQzMjc6WFhlSHRxQ0hSZTVoS2tKYmxrR0hhN0w2d1p0" > ~/.npmrc
+                registry=https://$ARTIFACTORY_URL/artifactory/api/npm/paris-npm/
+                //$ARTIFACTORY_URL/artifactory/api/npm/paris-npm/:_authToken=$ARTIFACTORY_PASSWORD" > ~/.npmrc
 
 
       - name: Push to artifactory
