@@ -14,13 +14,14 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-      # - name: Configure artifactory
+      - name: Configure artifactory
         env:
           ARTIFACTORY_USEREMAIL: ${{ secrets.ARTIFACTORY_USEREMAIL }}
           ARTIFACTORY_PASSWORD: ${{ secrets.JFROG_NPM_TOKEN }}
           ARTIFACTORY_URL: ${{ secrets.ARTIFACTORY_URL }}
-      - run: 
-         echo "email = hamdaniymelissa@gmail.com
+        run:
+          |
+          echo "email = hamdaniymelissa@gmail.com
                 always-auth = true
                 registry=https://trialk033s3.jfrog.io/artifactory/api/npm/paris-npm/
                 //trialk033s3.jfrog.io/artifactory/api/npm/paris-npm/:_authToken=cmVmdGtuOjAxOjE3NjYxMzQzMjc6WFhlSHRxQ0hSZTVoS2tKYmxrR0hhN0w2d1p0" > ~/.npmrc
