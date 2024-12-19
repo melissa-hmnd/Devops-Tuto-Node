@@ -23,7 +23,7 @@ jobs:
          echo "email = hamdaniymelissa@gmail.com
                 always-auth = true
                 registry=https://trialk033s3.jfrog.io/artifactory/api/npm/paris-npm/
-                //trialk033s3.jfrog.io/artifactory/api/npm/paris-npm/:_authToken=cmVmdGtuOjAxOjE3NjYwNjg4NzE6RHUzSFZ0b3lyQUIyRlZjUnJGSGY3Q2U0RUps" > ~/.npmrc
+                //trialk033s3.jfrog.io/artifactory/api/npm/paris-npm/:_authToken=cmVmdGtuOjAxOjE3NjYxMzQzMjc6WFhlSHRxQ0hSZTVoS2tKYmxrR0hhN0w2d1p0" > ~/.npmrc
 
 
       - name: Push to artifactory
