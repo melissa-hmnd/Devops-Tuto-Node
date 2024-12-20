@@ -16,10 +16,19 @@ jobs:
           JF_USER: ${{ secrets.JF_USER }}
           JF_PASSWORD: ${{ secrets.JF_PASSWORD }}
           
-      - name : jfrog check version
-        run: jf --version
+      # - name : jfrog check version
+      #   run: jf --version
         
-
+      - run:
+          |
+          # Ping the server
+          jf rt ping
+          # Collect environment variables for the build
+          jf rt bce
+          # Collect VCS details from git and add them to the build
+          jf rt bag
+          # Publish build info
+          jf rt bp
       # - name: Set up nodejs
       #   uses: actions/setup-node@v3
       #   with:
